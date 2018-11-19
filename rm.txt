@@ -1,0 +1,15 @@
+1. array DFS(Matrix _g)
+* input: graph data
+* output: adjacency list that created by DFS
+** Select a vertex 'first vertex' and work DFS.
+** Number all vertices orderly.
+
+2. array pathfinder(array _adj_list)
+* input: output of DFS
+* output: array of ordered paths ... (cycle c, paths)
+** Defined by paper
+
+3. array EMBED(array _paths_with_cycle)
+* input:
+* output:
+** Defined by paper
