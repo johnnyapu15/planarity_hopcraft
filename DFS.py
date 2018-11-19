@@ -48,7 +48,7 @@ def DFS(_i):
                 m[_i][j] = 0
                 m[j][_i] = 0
                 preVtx = arc_stack[-1] # as new index.
-                adj_list[preVtx].append(idx)
+                adj_list[preVtx].append(idx + 1)
                 DFS(j)
                 return
     findFronds()
