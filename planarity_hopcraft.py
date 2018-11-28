@@ -120,9 +120,45 @@ s = 0
 DFS_hopcraft(s, -1)
 adj_list = contruct_ordered_adj_list()
 
+for idx, l in enumerate(adj_list):
+    for idx2, r in enumerate(l):
+        tmp = []
+        tmp.append(idx)
+        tmp.append(r)
+        if str(tmp) in isArc.keys():
+            print(str(tmp))
+            adj_list[tmp[1]].remove(tmp[0])
+        else:
+            #fronds
+            print(idx)
+            print(r)
+            if idx < r:
+                l.remove(r)
 
 
 paths = []
+def pathfinder_hopcraft2(v):
+    global s
+    global cur_path
+    global paths
+    global adj_list
+    for idx, w in enumerate(adj_list[v]):
+        if v < w:
+            if s == -1:
+                s = v
+                #paths.append(cur_path)
+                cur_path = []
+            cur_path.append(w)
+            pathfinder_hopcraft2(w)
+        else:
+            # v - -> w
+            if s == -1:
+                s = v
+                #paths.append(cur_path)
+                cur_path = [] 
+            cur_path.append(w)
+            paths.append(cur_path)
+            s = -1
 
 def pathfinder_hopcraft(pre, v):
     global s
@@ -151,4 +187,4 @@ def pathfinder_hopcraft(pre, v):
 # paths = []
 cur_path = []
 s = -1
-pathfinder_hopcraft(-1, 0)
+pathfinder_hopcraft2(0)
